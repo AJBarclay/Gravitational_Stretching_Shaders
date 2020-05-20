@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Lab 3: Shaders in Three.js</title>
+		<style>
+			body { margin: 0; }
+			canvas { display: block; }
+		</style>
+	</head>
+	<body>
+		<script src="../three.js-master/build/three.js"></script>
+		<script>
+			/// <summary>
+			/// Setup the scene
+			/// </summary>
+            var scene = new THREE.Scene();
+            var camera = new THREE.PerspectiveCamera(75, 
+            window.innerWidth/window.innerHeight, 0.1, 1000);
+            var renderer = new THREE.WebGLRenderer();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            document.body.appendChild(renderer.domElement);
+			camera.position.z = 5;
+			
+			/// <summary>
+			/// TODO: functions to add objects
+			/// </summary>
+
+			/// <summary>
+			/// Add scene lights
+			/// </summary>
+			var light = new THREE.PointLight(0xffffff, 1, 1000);
+			light.position.set(10, 10, 10);
+			scene.add(light);
+
+			
+			/// <summary>
+			/// File Loader
+			/// </summary>
+			THREE.Cache.enabled = true;
+			var count = 0;
+			var countD = 0;
+			var loader = new THREE.FileLoader();
+			var fshader, vshader;
+			var fshaderD, vshaderD;
+
+			// load vertex shader
+			loader.load('shaders/vertexShader.vert',
+			// onLoad callback
+			function (data) {
+					console.log(data); // output the text to the console
+					vshader = data;
+					count += 1;
+					// TODO: call method to add object here
+			},
+			// onProgress callback
+			function (xhr) {
+				console.log((xhr.loaded/xhr.total * 100)+ '% loaded');
+			},
+			// onError callback
+			function (err) {
+				console.error('An error happened');
+			});
+			
+			// load fragment shader
+			loader.load('shaders/fragmentShader.frag',
+			// onLoad callback
+			function (data) {
+					console.log(data); // output the text to the console
+					fshader = data;
+					count += 1;
+					// TODO: call method to add object here
+			},
+			// onProgress callback
+			function (xhr) {
+				console.log((xhr.loaded/xhr.total * 100)+ '% loaded');
+			},
+			// onError callback
+			function (err) {
+				console.error('An error happened');
+			});
+
+			/// <summary>
+			/// Position objects in the scene
+			/// </summary>
+			// TODO: position code
+
+			/// <summary>
+			/// Animate objects
+			/// </summary>
+			function animate() {
+				requestAnimationFrame(animate);
+				// TODO: animatioin code
+
+			}
+			animate();
+
+		</script>
+	</body>
+</html>
