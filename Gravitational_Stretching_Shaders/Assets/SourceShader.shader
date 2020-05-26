@@ -2,7 +2,6 @@
 {
     Properties
     {
-        _Strength("Strength", range(0,1)) = 0.0
 		_Color("Color", Color) = (0,1,0,1)
 	}
     SubShader
@@ -17,9 +16,7 @@
             #pragma vertex vertexFunc
 			#pragma fragment fragmentFunc
 			
-			float _Strength;
 			float4 _Color;
-			uniform float4 _GlobalColor;
 			
 			struct vertexInput {
 				float4 vertex : POSITION;
