@@ -17,6 +17,7 @@
 			#pragma fragment fragmentFunc
 			
 			float4 _Color;
+			float4 _GlobalColor;
 			
 			struct vertexInput {
 				float4 vertex : POSITION;
@@ -34,7 +35,7 @@
 			}
 			
 			float4 fragmentFunc(vertexOutput IN) : COLOR{
-				return _GlobalColor;
+				return _GlobalColor+_Color;
 			}
 			
             ENDCG
