@@ -51,10 +51,8 @@ Shader "Unlit/Gravitational_Stretching_Shader"
 				float4 objectOrigin = mul(unity_ObjectToWorld, float4(0.0, 0.0, 0.0, 1.0));	//https://forum.unity.com/threads/get-object-center-in-a-shader.180516/
 
 				float3 pullDirection = normalize (float3(_Vector.x - worldPos.x, _Vector.y - worldPos.y, _Vector.z - worldPos.z));
-				//float3 pullDirection = float3(_Vector.x - objectOrigin.x, _Vector.y - objectOrigin.y, _Vector.z - objectOrigin.z);
 				
 				float difference = distance(_Vector.xyz, worldPos.xyz);
-				//float difference = distance(_Vector.xyz, objectOrigin.xyz);
 
 				float3 displacement = (pullDirection / (difference *(1/_Strength)) );
 				
@@ -74,10 +72,8 @@ Shader "Unlit/Gravitational_Stretching_Shader"
 				    worldPos.z = 0.0;
 				}
 
-				//worldPos = ((worldPos.xyz + ((pullDirection.x/difference, pullDirection.y / difference, pullDirection.z / difference))), worldPos.w);
 
                 v2f o;
-                //o.vertex = UnityObjectToClipPos(worldPos);
 				o.vertex = mul(UNITY_MATRIX_VP, worldPos);
                 o.uv = TRANSFORM_TEX(v.uv, _MainTex);
                 return o;
