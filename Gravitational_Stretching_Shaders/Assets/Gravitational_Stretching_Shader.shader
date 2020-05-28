@@ -57,7 +57,7 @@ Shader "Unlit/Gravitational_Stretching_Shader"
 				float difference = distance(_Vector.xyz, worldPos.xyz);
 				//float difference = distance(_Vector.xyz, objectOrigin.xyz);
 
-				float3 displacement = (pullDirection / (difference *_Strength) );
+				float3 displacement = (pullDirection / (difference *(1/_Strength)) );
 				worldPos.xyz += displacement;
 
 				//worldPos = ((worldPos.xyz + ((pullDirection.x/difference, pullDirection.y / difference, pullDirection.z / difference))), worldPos.w);
