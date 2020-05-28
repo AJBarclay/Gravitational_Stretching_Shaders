@@ -44,21 +44,35 @@ Shader "Unlit/Gravitational_Stretching_Shader"
 
             v2f vert (appdata v)
             {
+                float4 oldWorldPos = mul(unity_ObjectToWorld, v.vertex);
 
 				float4 worldPos = mul(unity_ObjectToWorld, v.vertex);
 
 				float4 objectOrigin = mul(unity_ObjectToWorld, float4(0.0, 0.0, 0.0, 1.0));	//https://forum.unity.com/threads/get-object-center-in-a-shader.180516/
 
-				float3 pullDirection = float3(_Vector.x - worldPos.x, _Vector.y - worldPos.y, _Vector.z - worldPos.z);
+				float3 pullDirection = normalize (float3(_Vector.x - worldPos.x, _Vector.y - worldPos.y, _Vector.z - worldPos.z));
 				//float3 pullDirection = float3(_Vector.x - objectOrigin.x, _Vector.y - objectOrigin.y, _Vector.z - objectOrigin.z);
-
 				
-
 				float difference = distance(_Vector.xyz, worldPos.xyz);
 				//float difference = distance(_Vector.xyz, objectOrigin.xyz);
 
 				float3 displacement = (pullDirection / (difference *(1/_Strength)) );
+				
 				worldPos.xyz += displacement;
+                
+                // if mirrored, clamp at black hole origin
+				if(worldPos.x * oldWorldPos.x <0)
+				{
+				    worldPos.x = 0.0;
+				}
+				if(worldPos.y * oldWorldPos.y <0)
+				{
+				    worldPos.y = 0.0;
+				}
+				if(worldPos.z * oldWorldPos.z <0)
+				{
+				    worldPos.z = 0.0;
+				}
 
 				//worldPos = ((worldPos.xyz + ((pullDirection.x/difference, pullDirection.y / difference, pullDirection.z / difference))), worldPos.w);
 
