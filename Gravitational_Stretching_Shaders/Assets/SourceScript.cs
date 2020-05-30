@@ -14,8 +14,6 @@ public class SourceScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {	
-		System.Random rand = new System.Random();
-        Color color = new Color(1,0,0,1);
-        Shader.SetGlobalColor("_GlobalColor",color);
+		transform.position = new Vector3((float)(3*Math.Sin(Time.time)),0,(float)(3*Math.Cos(Time.time)));
     }
 }

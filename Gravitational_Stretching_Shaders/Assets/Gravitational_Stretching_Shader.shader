@@ -26,6 +26,7 @@ Shader "Unlit/Gravitational_Stretching_Shader"
 			fixed4 _Color;
 			float _Strength;
 			Vector _Vector;
+			float3 _Source;
 
             struct appdata
             {
