@@ -12,6 +12,7 @@
         Pass
         {
             CGPROGRAM
+<<<<<<< HEAD:Gravitational_Stretching_Shaders/Assets/NewUnlitShader.shader
             #pragma vertex vert
             #pragma fragment frag
             // make fog work
@@ -52,6 +53,33 @@
                 UNITY_APPLY_FOG(i.fogCoord, col);
                 return col;
             }
+=======
+            #pragma vertex vertexFunc
+			#pragma fragment fragmentFunc
+			
+			float _Strength;
+			float4 _Color;
+			uniform float4 _GlobalColor;
+			
+			struct vertexInput {
+				float4 vertex : POSITION;
+			};
+			
+			struct vertexOutput {
+				float4 pos : SV_POSITION;
+			};
+			
+			vertexOutput vertexFunc(vertexInput IN){
+				vertexOutput o;
+				float4 worldPos = mul(unity_ObjectToWorld, IN.vertex);
+				o.pos = mul(UNITY_MATRIX_VP, worldPos);
+				return o;
+			}
+			
+			float4 fragmentFunc(vertexOutput IN) : COLOR{
+				return _GlobalColor+_Color;
+			}
+>>>>>>> Max:Gravitational_Stretching_Shaders/Assets/AffectedShader.shader
 			
             ENDCG
         }
