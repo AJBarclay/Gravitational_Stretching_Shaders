@@ -43,9 +43,9 @@ public class AffectedScript : MonoBehaviour
 		t = Time.time/300;
 		Vector3 diffPos = (Source.transform.position - transform.position);
 		float absDiff = absDist(diffPos.x,diffPos.y,diffPos.z);
-		xPos = gForce(absDiff)*direction(diffPos.x);
-		yPos = gForce(absDiff)*direction(diffPos.y);
-		zPos = gForce(absDiff)*direction(diffPos.z);
+		xPos = gForce(diffPos.x)*direction(diffPos.x);
+		yPos = gForce(diffPos.y)*direction(diffPos.y);
+		zPos = gForce(diffPos.z)*direction(diffPos.z);
 		Debug.Log("Difference Position: "+diffPos);
 		Acceleration = new Vector3(xPos,yPos,zPos);
 		Debug.Log("Acc:"+Acceleration);
