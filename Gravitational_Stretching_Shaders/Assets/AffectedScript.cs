@@ -39,11 +39,10 @@ public class AffectedScript : MonoBehaviour
     void Update()
     {
 
-        //Shader.SetGlobalVector("_Vector",Source.transform.position);
-        //GetComponent<Renderer>().material.SetVector("_Vector", new Vector4(Source.transform.position.x, Source.transform.position.y, Source.transform.position.z,1.0f));
-        GetComponent<Renderer>().sharedMaterial.SetVector("_Vector", Source.transform.position);
+    //Shader.SetGlobalVector("_Vector",Source.transform.position);
+    //GetComponent<Renderer>().material.SetVector("_Vector", new Vector4(Source.transform.position.x, Source.transform.position.y, Source.transform.position.z,1.0f));
 
-        float xPos, yPos, zPos, t;
+    float xPos, yPos, zPos, t;
 		t = Time.time/300;
 		Vector3 diffPos = (Source.transform.position - transform.position);
 		float absDiff = absDist(diffPos.x,diffPos.y,diffPos.z);
@@ -65,6 +64,7 @@ public class AffectedScript : MonoBehaviour
 		Debug.Log("Velocity: "+Velocity);
 		transform.position = transform.position 
 			+ new Vector3(Velocity.x*t,Velocity.y*t,Velocity.z*t);
+    GetComponent<Renderer>().sharedMaterial.SetVector("_Vector", Source.transform.position);
         //transform.position = Source.transform.position + new Vector3(xPos,yPos,zPos);
     }
 }
