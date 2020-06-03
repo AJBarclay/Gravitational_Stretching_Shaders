@@ -6,12 +6,13 @@ using UnityEngine;
 public class AffectedScript : MonoBehaviour
 {
 	public GameObject Source;
+    public Material Spaghettify_Material;
 	Vector3 Velocity = new Vector3(0,0,0), Acceleration;
 	int Cap = 3;
     // Start is called before the first frame update
     void Start()
     {
-        
+        GetComponent<Renderer>().sharedMaterial.SetVector("_Vector", new Vector4(0.0f, 0.0f, 0.0f, 1.0f));
     }
 	
 	int direction(float pos){
@@ -36,10 +37,13 @@ public class AffectedScript : MonoBehaviour
 	
     // Update is called once per frame
     void Update()
-    {	
-	
-		Shader.SetGlobalVector("_Vector",Source.transform.position);
-		float xPos, yPos, zPos, t;
+    {
+
+        //Shader.SetGlobalVector("_Vector",Source.transform.position);
+        //GetComponent<Renderer>().material.SetVector("_Vector", new Vector4(Source.transform.position.x, Source.transform.position.y, Source.transform.position.z,1.0f));
+        GetComponent<Renderer>().sharedMaterial.SetVector("_Vector", Source.transform.position);
+
+        float xPos, yPos, zPos, t;
 		t = Time.time/300;
 		Vector3 diffPos = (Source.transform.position - transform.position);
 		float absDiff = absDist(diffPos.x,diffPos.y,diffPos.z);

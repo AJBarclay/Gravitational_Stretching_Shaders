@@ -3,7 +3,9 @@ guid: c7de7f59106b9c5498b4d2b38b296fcf
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - Spaghettify_Material: {fileID: 2100000, guid: dc552a9d3b2bb0041bf5b028c952b2b1,
+      type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

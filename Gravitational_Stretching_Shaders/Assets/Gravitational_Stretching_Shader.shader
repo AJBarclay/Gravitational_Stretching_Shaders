@@ -6,7 +6,6 @@ Shader "Unlit/Gravitational_Stretching_Shader"
     {
 		_Color ("Color", Color) = (0,0,0,1)
         _MainTex ("Texture", 2D) = "white" {}
-		_Vector ("GravitatorPos", Vector) = (0.0,0.0,0.0,1.0)
 		_Strength("Strength", Range(0,2)) = 1.0
     }
     SubShader
@@ -25,7 +24,8 @@ Shader "Unlit/Gravitational_Stretching_Shader"
 
 			fixed4 _Color;
 			float _Strength;
-			Vector _Vector;
+			uniform Vector _Vector;
+			
 
             struct appdata
             {
@@ -48,32 +48,24 @@ Shader "Unlit/Gravitational_Stretching_Shader"
 
 				float4 worldPos = mul(unity_ObjectToWorld, v.vertex);
 
-				float3 pullDirection = normalize (float3(_Vector.x - worldPos.x, _Vector.y - worldPos.y, _Vector.z - worldPos.z));
-
+				float3 pullDirection = (float3(_Vector.x - worldPos.x, _Vector.y - worldPos.y, _Vector.z - worldPos.z));
 				
 				float difference = distance(_Vector.xyz, worldPos.xyz);
 
-
 				float3 displacement = (pullDirection / (difference *(1/_Strength)) );
 				
-				worldPos.xyz += displacement;
-                
-                // if mirrored, clamp at black hole origin
-				
-				if(worldPos.x * oldWorldPos.x <0)
-				{
-				    worldPos.x = _Vector.x;
-				}
-				if(worldPos.y * oldWorldPos.y <0)
-				{
-				    worldPos.y = _Vector.y;
-				}
-				if(worldPos.z * oldWorldPos.z <0)
-				{
-				    worldPos.z = _Vector.z;
-				}
 				
 
+				worldPos.xyz += displacement;
+
+				float travel = distance(worldPos, oldWorldPos);
+                
+                // if vertex travels through the black hole, it will stick at the origin of the black hole
+				if (travel > difference)
+				{
+					worldPos.xyz = _Vector.xyz;
+				}
+				
 
                 v2f o;
 				o.vertex = mul(UNITY_MATRIX_VP, worldPos);

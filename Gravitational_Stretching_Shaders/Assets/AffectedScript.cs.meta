@@ -1,13 +1,12 @@
 fileFormatVersion: 2
-<<<<<<< HEAD
 guid: 23d5c619007a703449cd0b5ba1aa988e
-=======
-guid: f3efab6be53e893469a4e78f86fae07b
->>>>>>> 14a065022e37f41d6bfc88cd42b225f0825281d1
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - Source: {instanceID: 0}
+  - Spaghettify_Material: {fileID: 2100000, guid: dc552a9d3b2bb0041bf5b028c952b2b1,
+      type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

@@ -209,7 +209,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 442558099}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.5, y: -0.11, z: 0.04}
+  m_LocalPosition: {x: 1.6, y: 0.3, z: 0.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -228,6 +228,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Source: {fileID: 853575566}
+  Spaghettify_Material: {fileID: 2100000, guid: dc552a9d3b2bb0041bf5b028c952b2b1,
+    type: 2}
 --- !u!1 &630365733
 GameObject:
   m_ObjectHideFlags: 0
@@ -316,7 +318,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 630365733}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.174, y: 0.258, z: 0.698}
+  m_LocalPosition: {x: -2.82, y: -1.15, z: 2.87}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -335,6 +337,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Source: {fileID: 853575566}
+  Spaghettify_Material: {fileID: 2100000, guid: dc552a9d3b2bb0041bf5b028c952b2b1,
+    type: 2}
 --- !u!1 &853575566
 GameObject:
   m_ObjectHideFlags: 0
@@ -529,7 +533,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1159838250}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.532, y: 0.083, z: -1.11}
+  m_LocalPosition: {x: -0.77, y: -0.67, z: -3.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -548,6 +552,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Source: {fileID: 853575566}
+  Spaghettify_Material: {fileID: 2100000, guid: dc552a9d3b2bb0041bf5b028c952b2b1,
+    type: 2}
 --- !u!1 &1498359659
 GameObject:
   m_ObjectHideFlags: 0
@@ -774,6 +780,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Source: {fileID: 853575566}
+  Spaghettify_Material: {fileID: 2100000, guid: dc552a9d3b2bb0041bf5b028c952b2b1,
+    type: 2}
 --- !u!1001 &2092789638
 PrefabInstance:
   m_ObjectHideFlags: 0
