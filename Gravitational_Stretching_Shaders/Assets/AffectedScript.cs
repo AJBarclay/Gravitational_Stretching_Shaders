@@ -5,22 +5,6 @@ using UnityEngine;
 
 public class AffectedScript : MonoBehaviour
 {
-<<<<<<< HEAD
-    public GameObject Source;
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        transform.position = Source.transform.position +
-        new Vector3(((float)Math.Sin(Time.time))/100.0f, 0,  ((float)-Math.Cos(Time.time))/100.0f);
-    }
-}
-=======
 	public GameObject Source;
 	Vector3 Velocity = new Vector3(0,0,0), Acceleration;
 	int Cap = 3;
@@ -54,7 +38,7 @@ public class AffectedScript : MonoBehaviour
     void Update()
     {	
 	
-		Shader.SetGlobalVector("_Source",Source.transform.position);
+		Shader.SetGlobalVector("_Vector",Source.transform.position);
 		float xPos, yPos, zPos, t;
 		t = Time.time/300;
 		Vector3 diffPos = (Source.transform.position - transform.position);
@@ -80,4 +64,4 @@ public class AffectedScript : MonoBehaviour
         //transform.position = Source.transform.position + new Vector3(xPos,yPos,zPos);
     }
 }
->>>>>>> 14a065022e37f41d6bfc88cd42b225f0825281d1
+

@@ -26,7 +26,6 @@ Shader "Unlit/Gravitational_Stretching_Shader"
 			fixed4 _Color;
 			float _Strength;
 			Vector _Vector;
-			Vector _Source;
 
             struct appdata
             {
@@ -49,10 +48,8 @@ Shader "Unlit/Gravitational_Stretching_Shader"
 
 				float4 worldPos = mul(unity_ObjectToWorld, v.vertex);
 
-				float4 objectOrigin = mul(unity_ObjectToWorld, _Source);	//https://forum.unity.com/threads/get-object-center-in-a-shader.180516/
-
-
 				float3 pullDirection = normalize (float3(_Vector.x - worldPos.x, _Vector.y - worldPos.y, _Vector.z - worldPos.z));
+
 				
 				float difference = distance(_Vector.xyz, worldPos.xyz);
 
@@ -62,6 +59,7 @@ Shader "Unlit/Gravitational_Stretching_Shader"
 				worldPos.xyz += displacement;
                 
                 // if mirrored, clamp at black hole origin
+				
 				if(worldPos.x * oldWorldPos.x <0)
 				{
 				    worldPos.x = 0.0;
@@ -74,6 +72,7 @@ Shader "Unlit/Gravitational_Stretching_Shader"
 				{
 				    worldPos.z = 0.0;
 				}
+				
 
 
                 v2f o;

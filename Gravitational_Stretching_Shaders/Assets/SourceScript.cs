@@ -13,7 +13,9 @@ public class SourceScript : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {	
-		transform.position = new Vector3((float)(3*Math.Sin(Time.time)),0,(float)(3*Math.Cos(Time.time)));
+    {
+        transform.position = new Vector3((float)(3 * Math.Sin(Time.time)), 0, (float)(3 * Math.Cos(Time.time)));
+        Shader.SetGlobalVector("_Vector", transform.position);
+        
     }
 }
