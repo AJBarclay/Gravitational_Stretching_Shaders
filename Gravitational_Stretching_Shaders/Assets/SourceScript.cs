@@ -1,8 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
-public class NewBehaviourScript : MonoBehaviour
+
+public class SourceScript : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
@@ -11,8 +13,7 @@ public class NewBehaviourScript : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
-        Color color = new Color(1,1,1,1);
-        Shader.SetGlobalColor("_GlobalColor",color);
+    {	
+		transform.position = new Vector3((float)(3*Math.Sin(Time.time)),0,(float)(3*Math.Cos(Time.time)));
     }
 }
