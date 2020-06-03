@@ -62,15 +62,15 @@ Shader "Unlit/Gravitational_Stretching_Shader"
 				
 				if(worldPos.x * oldWorldPos.x <0)
 				{
-				    worldPos.x = 0.0;
+				    worldPos.x = _Vector.x;
 				}
 				if(worldPos.y * oldWorldPos.y <0)
 				{
-				    worldPos.y = 0.0;
+				    worldPos.y = _Vector.y;
 				}
 				if(worldPos.z * oldWorldPos.z <0)
 				{
-				    worldPos.z = 0.0;
+				    worldPos.z = _Vector.z;
 				}
 				
 
