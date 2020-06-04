@@ -38,7 +38,6 @@ public class AffectedScript : MonoBehaviour
     void Update()
     {	
 	
-		Shader.SetGlobalVector("_Source",Source.transform.position);
 		float xPos, yPos, zPos, t;
 		t = Time.time/300;
 		Vector3 diffPos = (Source.transform.position - transform.position);
@@ -61,6 +60,7 @@ public class AffectedScript : MonoBehaviour
 		Debug.Log("Velocity: "+Velocity);
 		transform.position = transform.position 
 			+ new Vector3(Velocity.x*t,Velocity.y*t,Velocity.z*t);
+		Shader.SetGlobalVector("_Source",Source.transform.position);
         //transform.position = Source.transform.position + new Vector3(xPos,yPos,zPos);
     }
 }
