@@ -76,7 +76,7 @@ public class AffectedScript : MonoBehaviour
         if (newDistance - oldDistance > tolerance)
         {
             transform.position = Source.transform.position;
-            transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
+            transform.localScale = new Vector3(0.01f, 0.01f, 0.01f);
         }
         GetComponent<Renderer>().sharedMaterial.SetVector("_Vector", Source.transform.position);
         //transform.position = Source.transform.position + new Vector3(xPos,yPos,zPos);
