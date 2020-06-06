@@ -51,7 +51,7 @@ public class AffectedScript : MonoBehaviour
 
     float xPos, yPos, zPos, t, tolerance;
 		t = Time.time/300;
-        tolerance = 0.15f;
+        tolerance = 0.1f;
 		Vector3 diffPos = (Source.transform.position - transform.position);
 		float absDiff = absDist(diffPos.x,diffPos.y,diffPos.z);
 		xPos = gForce(diffPos.x)*direction(diffPos.x);
