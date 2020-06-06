@@ -6,7 +6,7 @@ Shader "Unlit/Gravitational_Stretching_Shader"
     {
 		_Color ("Color", Color) = (0,0,0,1)
         _MainTex ("Texture", 2D) = "white" {}
-		_Strength("Strength", Range(0,2)) = 1.0
+		_Strength("Strength", Range(0,10)) = 1.0
     }
     SubShader
     {
