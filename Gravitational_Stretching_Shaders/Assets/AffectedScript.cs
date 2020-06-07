@@ -24,9 +24,9 @@ public class AffectedScript : MonoBehaviour
 	
 	float gForce(float pos){
 		return 1.0F;
-		float gConstant = 1.0F;
+		float gConstant = 1.0f;
 		if (pos == 0) return 0;
-		if (pos < 1 && pos > -1) return 0;
+		if (pos < 0.1f && pos > -0.1f) return 0;
 		return (gConstant / (pos*pos));
 	}
 	
@@ -85,6 +85,10 @@ public class AffectedScript : MonoBehaviour
             if (transform.localScale.x > 0.0f && transform.localScale.y > 0.0f && transform.localScale.z > 0.0f)
             {
                 transform.localScale += shrink;
+                if(transform.localScale.x > -0.01f && transform.localScale.x < 0.01f)
+                {
+                    transform.localScale = new Vector3(0.0f, 0.0f, 0.0f);
+                }
             }
         }
         
