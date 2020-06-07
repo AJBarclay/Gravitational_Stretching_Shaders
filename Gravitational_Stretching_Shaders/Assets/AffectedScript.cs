@@ -9,6 +9,7 @@ public class AffectedScript : MonoBehaviour
     public Material Spaghettify_Material;
 	Vector3 Velocity = new Vector3(0,0,0), Acceleration;
 	int Cap = 3;
+    bool caught = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -49,10 +50,13 @@ public class AffectedScript : MonoBehaviour
     {
 
 
-    float xPos, yPos, zPos, t, tolerance;
+    float xPos, yPos, zPos, t, tolerance, shrinkRate;
 		t = Time.time/300;
-        tolerance = 0.1f;
-		Vector3 diffPos = (Source.transform.position - transform.position);
+        tolerance = 0.075f;
+        shrinkRate = -0.01f;
+        Vector3 shrink = new Vector3(shrinkRate, shrinkRate, shrinkRate);
+
+        Vector3 diffPos = (Source.transform.position - transform.position);
 		float absDiff = absDist(diffPos.x,diffPos.y,diffPos.z);
 		xPos = gForce(diffPos.x)*direction(diffPos.x);
 		yPos = gForce(diffPos.y)*direction(diffPos.y);
@@ -73,11 +77,17 @@ public class AffectedScript : MonoBehaviour
 		transform.position = transform.position	+ new Vector3(Velocity.x*t,Velocity.y*t,Velocity.z*t);
         float oldDistance = distance(Source.transform.position, oldTransform);
         float newDistance = distance(Source.transform.position, transform.position);
-        if (newDistance - oldDistance > tolerance)
+        if (newDistance - oldDistance > tolerance || caught)
         {
             transform.position = Source.transform.position;
-            transform.localScale = new Vector3(0.01f, 0.01f, 0.01f);
+            caught = true;
+
+            if (transform.localScale.x > 0.0f && transform.localScale.y > 0.0f && transform.localScale.z > 0.0f)
+            {
+                transform.localScale += shrink;
+            }
         }
+        
         GetComponent<Renderer>().sharedMaterial.SetVector("_Vector", Source.transform.position);
         //transform.position = Source.transform.position + new Vector3(xPos,yPos,zPos);
     }
